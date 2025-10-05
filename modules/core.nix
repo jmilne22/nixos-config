@@ -16,6 +16,7 @@
     telegram-desktop
     helix
     fastfetch
+    wl-clipboard
   ];
 
   # Audio
