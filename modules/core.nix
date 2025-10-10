@@ -17,6 +17,7 @@
     helix
     fastfetch
     wl-clipboard
+    zellij
   ];
 
   # Audio
