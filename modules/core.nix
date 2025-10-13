@@ -18,6 +18,7 @@
     fastfetch
     wl-clipboard
     zellij
+    jetbrains-mono
   ];
 
   # Audio
@@ -29,6 +30,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # video
+  hardware.graphics.enable = true;
 
   # Printing
   services.printing.enable = true;
