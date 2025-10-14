@@ -27,6 +27,10 @@
     noto-fonts
   ];
 
+
+  # starship prompt
+  programs.starship.enable = true;
+
   # Audio
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
