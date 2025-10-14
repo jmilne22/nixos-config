@@ -20,6 +20,7 @@
     zellij
     wallust
     brightnessctl
+    stow
   ];
 
   fonts.packages = with pkgs; [
