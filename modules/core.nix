@@ -18,6 +18,7 @@
     fastfetch
     wl-clipboard
     zellij
+    wallust
   ];
 
   fonts.packages = with pkgs; [
