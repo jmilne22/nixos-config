@@ -18,8 +18,11 @@
     fastfetch
     wl-clipboard
     zellij
-    jetbrains-mono
+  ];
+
+  fonts.packages = with pkgs; [
     google-fonts
+    nerd-fonts.jetbrains-mono
     noto-fonts
   ];
 
