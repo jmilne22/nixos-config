@@ -5,6 +5,9 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     swaynotificationcenter # notification system developed by swaywm maintainer
+    swaylock
+    swayidle
+    wlogout
     waybar
     rofi
     kitty
@@ -16,6 +19,9 @@
   # Will be exposed through DBus to programs willing to store secrets.
   services.gnome.gnome-keyring.enable = true;
 
+  # Need this for swaylock to work
+  security.pam.services.swaylock = {};
+  
   xdg.portal = {
     enable = true;
     wlr.enable = true;
