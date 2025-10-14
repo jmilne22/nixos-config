@@ -19,6 +19,8 @@
     wl-clipboard
     zellij
     jetbrains-mono
+    google-fonts
+    noto-fonts
   ];
 
   # Audio
