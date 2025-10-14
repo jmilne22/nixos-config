@@ -19,6 +19,7 @@
     wl-clipboard
     zellij
     wallust
+    brightnessctl
   ];
 
   fonts.packages = with pkgs; [
