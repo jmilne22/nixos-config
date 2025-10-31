@@ -7,6 +7,11 @@
   # Networking
   networking.networkmanager.enable = true;
 
+
+  # Flatpak
+  services.flatpak.enable = true;
+
+
   # Essential packages
   environment.systemPackages = with pkgs; [
     vim
