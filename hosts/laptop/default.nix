@@ -4,7 +4,6 @@
     /etc/nixos/hardware-configuration.nix
     ../../modules/core.nix
     ../../modules/desktops/gnome.nix
-    ../../modules/desktops/mangowc.nix
     ../../modules/packages/development.nix
     ../../modules/packages/gaming.nix
     ../../users/user.nix
