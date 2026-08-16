@@ -5,6 +5,7 @@
     ../../modules/core.nix
     ../../modules/desktops/plasma.nix
     ../../modules/packages/development.nix
+    ../../modules/packages/ai.nix
     ../../modules/packages/social.nix
     ../../modules/packages/gaming.nix
     ../../users/user.nix
