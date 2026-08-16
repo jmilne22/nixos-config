@@ -72,10 +72,4 @@
 
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_TIME = "he_IL.UTF-8";
-    LC_PAPER = "he_IL.UTF-8";
-    LC_MONETARY = "he_IL.UTF-8";
-    LC_MEASUREMENT = "he_IL.UTF-8";
-  };
 }
