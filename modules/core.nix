@@ -7,25 +7,37 @@
   # Networking
   networking.networkmanager.enable = true;
 
-
   # Flatpak
   services.flatpak.enable = true;
 
+  # Firefox
+  programs.firefox.enable = true;
 
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "James Milne";
+      user.email = "jmilne22@gmail.com";
+      init.defaultBranch = "main";
+      pull.ff = "only";
+      push.autoSetupRemote = true;
+    };
+  };
+  
   # Essential packages
   environment.systemPackages = with pkgs; [
     vim
     wget
-    git
     htop
-    telegram-desktop
     helix
     fastfetch
     wl-clipboard
     zellij
     wallust
     brightnessctl
-    stow
+    lazygit
+    xclip
+    pciutils
   ];
 
   fonts.packages = with pkgs; [
@@ -50,7 +62,20 @@
 
   # video
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # Printing
   services.printing.enable = true;
+
+  # Timezone
+  time.timeZone = "Asia/Jerusalem";
+
+  # Locale
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_TIME = "he_IL.UTF-8";
+    LC_PAPER = "he_IL.UTF-8";
+    LC_MONETARY = "he_IL.UTF-8";
+    LC_MEASUREMENT = "he_IL.UTF-8";
+  };
 }

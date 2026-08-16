@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 {
   imports = [
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../modules/core.nix
     ../../modules/desktops/gnome.nix
     ../../modules/packages/development.nix
+    ../../modules/packages/social.nix
     ../../modules/packages/gaming.nix
     ../../users/user.nix
   ];
@@ -35,21 +36,6 @@
 
   # Hostname
   networking.hostName = "laptop";
-
-  # Locale
-  time.timeZone = "Asia/Jerusalem";
-  i18n.defaultLocale = "en_IL";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "he_IL.UTF-8";
-    LC_IDENTIFICATION = "he_IL.UTF-8";
-    LC_MEASUREMENT = "he_IL.UTF-8";
-    LC_MONETARY = "he_IL.UTF-8";
-    LC_NAME = "he_IL.UTF-8";
-    LC_NUMERIC = "he_IL.UTF-8";
-    LC_PAPER = "he_IL.UTF-8";
-    LC_TELEPHONE = "he_IL.UTF-8";
-    LC_TIME = "he_IL.UTF-8";
-  };
 
   system.stateVersion = "25.05";
 }
