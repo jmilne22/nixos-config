@@ -7,6 +7,7 @@
     ../../modules/packages/development.nix
     ../../modules/packages/social.nix
     ../../modules/packages/gaming.nix
+    ../../modules/packages/productivity.nix
     ../../users/user.nix
   ];
 

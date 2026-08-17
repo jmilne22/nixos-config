@@ -4,6 +4,7 @@
     python3
     uv
     go
+    gopls
     rustup
     nodejs
   ];
