@@ -44,7 +44,11 @@
   fonts.packages = with pkgs; [
     google-fonts
     nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
     noto-fonts
+    noto-fonts-color-emoji
+    noto-fonts-cjk-sans
+    liberation_ttf
   ];
 
 
