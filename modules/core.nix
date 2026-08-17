@@ -38,6 +38,7 @@
     lazygit
     xclip
     pciutils
+    calibre
   ];
 
   fonts.packages = with pkgs; [

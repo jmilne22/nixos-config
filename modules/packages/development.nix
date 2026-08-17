@@ -5,6 +5,7 @@
     uv
     go
     rustup
+    nodejs
   ];
 
   virtualisation.docker.enable = true;
