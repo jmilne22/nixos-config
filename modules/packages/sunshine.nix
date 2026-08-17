@@ -2,7 +2,7 @@
 {
   services.sunshine = {
     enable = true;
-    autoStart = true;
+    autoStart = false;
     capSysAdmin = true; # required for KMS capture under KDE Plasma Wayland
     openFirewall = true;
   };
