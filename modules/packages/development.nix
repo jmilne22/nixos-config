@@ -5,6 +5,8 @@
     uv
     go
     gopls
+    golangci-lint
+    golangci-lint-langserver
     rustup
     nodejs
   ];
