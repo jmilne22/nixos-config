@@ -70,18 +70,14 @@
   # The WM configs hardcode /usr/libexec/polkit-gnome-authentication-agent-1,
   # which doesn't exist on NixOS. Start it ourselves - their `pidof ... || ...`
   # lines then just fail quietly and we still get an auth agent.
+  #
+  # default.target, not graphical-session.target: only sway wires up a session
+  # target on NixOS, mango and labwc just set sessionPackages.
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
+    description = "polkit-gnome authentication agent";
+    wantedBy = [ "default.target" ];
+    serviceConfig.ExecStart =
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 
   xdg.portal = {
