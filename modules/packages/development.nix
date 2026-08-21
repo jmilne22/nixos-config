@@ -9,6 +9,7 @@
     golangci-lint-langserver
     rustup
     nodejs
+    bat
   ];
 
   virtualisation.docker.enable = true;
