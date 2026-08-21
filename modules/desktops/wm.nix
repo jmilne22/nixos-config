@@ -71,8 +71,11 @@
   # which doesn't exist on NixOS. Start it ourselves - their `pidof ... || ...`
   # lines then just fail quietly and we still get an auth agent.
   #
-  # default.target, not graphical-session.target: only sway wires up a session
-  # target on NixOS, mango and labwc just set sessionPackages.
+  # default.target, not the usual graphical-session.target: that target has to
+  # be started by *something*, and for mango and labwc nothing does. sway and
+  # dwl start one in their nixos module, niri in its niri-session script,
+  # hyprland via uwsm - but mango and labwc only set sessionPackages, so a
+  # service wantedBy graphical-session.target would silently never run.
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome authentication agent";
     wantedBy = [ "default.target" ];
