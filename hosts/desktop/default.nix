@@ -7,6 +7,7 @@
     ../../modules/packages/development.nix
     ../../modules/packages/ai.nix
     ../../modules/packages/social.nix
+    ../../modules/packages/multimedia.nix
     ../../modules/packages/gaming.nix
     ../../modules/packages/sunshine.nix
     ../../modules/packages/productivity.nix
