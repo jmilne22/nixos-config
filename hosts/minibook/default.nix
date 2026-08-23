@@ -18,6 +18,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Makes sure that dwm isn't rotated
+  services.xserver.windowManager.dwm.extraSessionCommands = ''
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DSI-1 --rotate right
+  '';
+
   # Chuwi MiniBook X hardware configuration
   hardware.chuwi-minibook-x = {
     # Choose your model:
