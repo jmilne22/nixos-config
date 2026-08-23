@@ -39,6 +39,8 @@
     xclip
     pciutils
     calibre
+    p7zip
+    unrar
   ];
 
   fonts.packages = with pkgs; [
