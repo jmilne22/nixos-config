@@ -32,12 +32,14 @@
     # Auto-rotation (optional, disable if you don't want it)
     autoDisplayRotation = {
       enable = false;  # Set to true if you want auto-rotation
-      # If enabled, configure rotation commands for your DE
+      # If enabled, configure rotation commands for your DE. These are xrandr,
+      # not wlr-randr: this host runs dwm on X11 now. wlr-randr is a wlroots
+      # tool and does nothing under X, so it would fail silently here.
       # commands = {
-      #   normal = "wlr-randr --output DSI-1 --transform normal";
-      #   bottomUp = "wlr-randr --output DSI-1 --transform 180";
-      #   rightUp = "wlr-randr --output DSI-1 --transform 270";
-      #   leftUp = "wlr-randr --output DSI-1 --transform 90";
+      #   normal = "xrandr --output DSI-1 --rotate normal";
+      #   bottomUp = "xrandr --output DSI-1 --rotate inverted";
+      #   rightUp = "xrandr --output DSI-1 --rotate right";
+      #   leftUp = "xrandr --output DSI-1 --rotate left";
       # };
     };
   };

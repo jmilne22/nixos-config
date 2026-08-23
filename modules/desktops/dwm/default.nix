@@ -26,6 +26,13 @@
     };
   };
 
+  # core.nix enables xdg.portal for Flatpak and installs the gtk backend, but
+  # since 1.17 a portal backend has to be named explicitly. gnome.nix and
+  # plasma.nix get this from the DE's own configPackages; a bare WM has nothing
+  # to do it, so on a dwm-only host this is what stops file pickers and
+  # screen sharing from silently having no implementation.
+  xdg.portal.config.common.default = [ "gtk" ];
+
   # config.def.h binds these by name (Mod+Shift+Enter, Mod+p) and they're
   # useless without them. Both accept `conf = ./...` the same way dwm does,
   # whenever they're worth styling.
