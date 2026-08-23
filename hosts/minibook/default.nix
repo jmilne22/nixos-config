@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   # This host isn't installed yet - hardware-configuration.nix gets generated
-  # on the machine at install time (see README step 3). Until then .#laptop
+  # on the machine at install time (see README step 3). Until then .#minibook
   # can't evaluate, which is expected, not a missing file.
   imports = [
     ./hardware-configuration.nix
@@ -39,7 +39,7 @@
   };
 
   # Hostname
-  networking.hostName = "laptop";
+  networking.hostName = "minibook";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 }

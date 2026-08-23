@@ -9,9 +9,12 @@ Personal NixOS flake configuration for multiple hosts.
   Holds only what genuinely differs per machine: bootloader, hardware quirks,
   `networking.hostName`, `system.stateVersion`, and the list of modules to import.
 - `modules/core.nix` — settings every machine gets; always imported
-- `modules/desktops/` — pick **one** per host (`gnome.nix`, `plasma.nix`).
-  `desktops/common/` is shared plumbing that those modules import themselves — never
-  import it from a host.
+- `modules/desktops/` — pick **one** per host (`gnome.nix`, `plasma.nix`, `dwm/`).
+  `desktops/displaymanagers/` holds greeters: pick **at most one**, and only on a host whose
+  desktop doesn't already bring its own — `gnome.nix` brings gdm and `plasma.nix` brings sddm,
+  so a greeter is for bare-WM hosts like dwm.
+  `desktops/common/` is for plumbing shared between desktop modules — currently empty, and
+  imported by those modules rather than from a host.
 - `modules/apps/` — pick any (`development.nix`, `gaming.nix`, …). Each file owns
   everything for one concern, including any services it needs: `gaming.nix` enables
   Steam as well as installing mangohud.
@@ -29,7 +32,7 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
    cd ~/nixos-config
    ```
 
-2. **Copy an existing host as a starting point** — pick whichever is closer to the new machine (`laptop` for a laptop-like device, `desktop` otherwise):
+2. **Copy an existing host as a starting point** — pick whichever is closer to the new machine (`minibook` for a laptop-like device, `desktop` otherwise):
 
    ```
    cp -r hosts/desktop hosts/<hostname>
@@ -45,8 +48,8 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 
 4. **Edit `hosts/<hostname>/default.nix`**:
    - Set `networking.hostName = "<hostname>";`
-   - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
-   - Drop/add any host-specific hardware modules (e.g. the laptop's `chuwi-minibook-x` block) as needed
+   - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`, `dwm/`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
+   - Drop/add any host-specific hardware modules (e.g. the minibook's `chuwi-minibook-x` block) as needed
    - Update `system.stateVersion` if `nixos-generate-config` reported a different one
 
 5. **Register it in `flake.nix`**, under `nixosConfigurations`:
@@ -74,4 +77,4 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 - Only one display manager can be enabled at a time. They all feed
   `services.displayManager.generic.execCmd`, so enabling a second is an *evaluation*
   error, not a runtime one.
-- Host-specific hardware quirks (e.g. the laptop's `chuwi-minibook-x` module) get added as an extra module in that host's `modules = [ ... ]` list in `flake.nix`, and as an extra flake input if the module comes from elsewhere.
+- Host-specific hardware quirks (e.g. the minibook's `chuwi-minibook-x` module) get added as an extra module in that host's `modules = [ ... ]` list in `flake.nix`, and as an extra flake input if the module comes from elsewhere.
