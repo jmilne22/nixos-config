@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  imports = [ ./wm.nix ];
+  imports = [ ./common/wayland.nix ];
 
   environment.systemPackages = with pkgs; [
     scenefx

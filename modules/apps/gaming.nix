@@ -10,6 +10,9 @@
 
   programs.gamemode.enable = true;
 
+  # controllers - users/user.nix puts the user in the uinput group
+  hardware.uinput.enable = true;
+
   environment.systemPackages = with pkgs; [
     mangohud
     heroic

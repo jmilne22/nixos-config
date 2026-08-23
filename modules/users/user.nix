@@ -3,6 +3,6 @@
   users.users.user = {
     isNormalUser = true;
     description = "User";
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" "uinput" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "uinput" ];
   };
 }

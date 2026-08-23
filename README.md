@@ -5,9 +5,17 @@ Personal NixOS flake configuration for multiple hosts.
 ## Layout
 
 - `flake.nix` — defines a `nixosConfigurations.<hostname>` entry per machine
-- `hosts/<hostname>/` — per-host config (`default.nix` + `hardware-configuration.nix`)
-- `modules/` — shared, reusable config (core settings, desktop environments, package sets)
-- `users/user.nix` — shared user account definition
+- `hosts/<hostname>/` — per-host config (`default.nix` + `hardware-configuration.nix`).
+  Holds only what genuinely differs per machine: bootloader, hardware quirks,
+  `networking.hostName`, `system.stateVersion`, and the list of modules to import.
+- `modules/core.nix` — settings every machine gets; always imported
+- `modules/desktops/` — pick **one** per host (`gnome.nix`, `plasma.nix`, `mangowc.nix`).
+  `desktops/common/` is shared plumbing that those modules import themselves — never
+  import it from a host.
+- `modules/apps/` — pick any (`development.nix`, `gaming.nix`, …). Each file owns
+  everything for one concern, including any services it needs: `gaming.nix` enables
+  Steam as well as installing mangohud.
+- `modules/users/user.nix` — shared user account definition
 
 ## Adding a new host
 
@@ -37,7 +45,7 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 
 4. **Edit `hosts/<hostname>/default.nix`**:
    - Set `networking.hostName = "<hostname>";`
-   - Adjust the `imports` list — swap the desktop environment (`modules/desktops/gnome.nix`, `plasma.nix`, `sway.nix`, `mangowc.nix`) and package sets (`modules/packages/*.nix`) to whatever the new host needs
+   - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`, `mangowc.nix`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
    - Drop/add any host-specific hardware modules (e.g. the laptop's `chuwi-minibook-x` block) as needed
    - Update `system.stateVersion` if `nixos-generate-config` reported a different one
 
@@ -60,5 +68,10 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 
 ## Notes
 
-- `result` / `result-*` are build symlinks and are gitignored — don't commit them.
+- `result` / `result-*` are build symlinks and are gitignored — don't commit them. The
+  pattern matches at any depth, so a stray `result` inside a subdirectory won't show up in
+  `git status` but will still pin an old system closure as a GC root.
+- Only one display manager can be enabled at a time. They all feed
+  `services.displayManager.generic.execCmd`, so enabling a second is an *evaluation*
+  error, not a runtime one.
 - Host-specific hardware quirks (e.g. the laptop's `chuwi-minibook-x` module) get added as an extra module in that host's `modules = [ ... ]` list in `flake.nix`, and as an extra flake input if the module comes from elsewhere.
