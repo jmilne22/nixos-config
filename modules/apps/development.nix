@@ -1,10 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # lowPrio: desktops/common/wayland.nix installs its own python3 wrapped
-    # with pygobject3 for waybar. Both provide bin/python3, which is a
-    # buildEnv collision - this one yields on a host that imports both.
-    (lib.lowPrio python3)
+    python3
     uv
     go
     gopls

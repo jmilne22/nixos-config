@@ -9,7 +9,7 @@ Personal NixOS flake configuration for multiple hosts.
   Holds only what genuinely differs per machine: bootloader, hardware quirks,
   `networking.hostName`, `system.stateVersion`, and the list of modules to import.
 - `modules/core.nix` — settings every machine gets; always imported
-- `modules/desktops/` — pick **one** per host (`gnome.nix`, `plasma.nix`, `mangowc.nix`).
+- `modules/desktops/` — pick **one** per host (`gnome.nix`, `plasma.nix`).
   `desktops/common/` is shared plumbing that those modules import themselves — never
   import it from a host.
 - `modules/apps/` — pick any (`development.nix`, `gaming.nix`, …). Each file owns
@@ -45,7 +45,7 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 
 4. **Edit `hosts/<hostname>/default.nix`**:
    - Set `networking.hostName = "<hostname>";`
-   - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`, `mangowc.nix`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
+   - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
    - Drop/add any host-specific hardware modules (e.g. the laptop's `chuwi-minibook-x` block) as needed
    - Update `system.stateVersion` if `nixos-generate-config` reported a different one
 
