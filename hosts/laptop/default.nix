@@ -6,7 +6,11 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/core.nix
-    ../../modules/desktops/gnome.nix
+    # dwm is the only desktop here, so this host brings its own greeter -
+    # nothing else on it provides one. Swap ly.nix for greetd.nix to change
+    # greeters; never import two, and never one next to gnome/plasma.
+    ../../modules/desktops/dwm
+    ../../modules/desktops/displaymanagers/ly.nix
     ../../modules/apps/development.nix
     ../../modules/apps/social.nix
     ../../modules/apps/gaming.nix
