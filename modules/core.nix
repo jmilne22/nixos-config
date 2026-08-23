@@ -51,6 +51,7 @@
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
     liberation_ttf
+    _0xproto
   ];
 
 
