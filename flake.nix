@@ -19,10 +19,10 @@
         ];
       };
 
-      laptop = nixpkgs.lib.nixosSystem {
+      minibook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/laptop
+          ./hosts/minibook
           chuwi-minibook-x.nixosModules.default
         ];
       };
