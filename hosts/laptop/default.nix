@@ -1,14 +1,17 @@
 { config, pkgs, ... }:
 {
+  # This host isn't installed yet - hardware-configuration.nix gets generated
+  # on the machine at install time (see README step 3). Until then .#laptop
+  # can't evaluate, which is expected, not a missing file.
   imports = [
     ./hardware-configuration.nix
     ../../modules/core.nix
     ../../modules/desktops/gnome.nix
-    ../../modules/packages/development.nix
-    ../../modules/packages/social.nix
-    ../../modules/packages/gaming.nix
-    ../../modules/packages/productivity.nix
-    ../../users/user.nix
+    ../../modules/apps/development.nix
+    ../../modules/apps/social.nix
+    ../../modules/apps/gaming.nix
+    ../../modules/apps/productivity.nix
+    ../../modules/users/user.nix
   ];
 
   # Bootloader

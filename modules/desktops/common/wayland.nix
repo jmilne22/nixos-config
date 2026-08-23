@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 {
-  # Shared userland for the wlroots-style WMs (sway, mango, river).
+  # Shared userland for the wlroots-style compositors (currently just mango).
+  # Imported by the compositor modules one directory up, never by a host
+  # directly - hosts pick a compositor, and the compositor pulls this in.
   # The compositor itself stays in its own module; everything here is the
   # stuff the WM *configs* reach for by name.
   #
@@ -11,7 +13,6 @@
     # screenshots + clipboard
     grim
     slurp
-    wl-clipboard
     cliphist
 
     # session bits
@@ -57,10 +58,6 @@
   programs.thunar.enable = true;
   programs.xfconf.enable = true; # so thunar's settings persist
 
-  # blueman-applet, launched from mango/autostart.sh
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
   # Secrets vault, exposed over DBus to anything that wants it.
   services.gnome.gnome-keyring.enable = true;
 
@@ -83,9 +80,7 @@
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
+  # xdg.portal.enable and the gtk portal come from core.nix; this is the only
+  # portal that's actually wlroots-specific (screencast/screenshot).
+  xdg.portal.wlr.enable = true;
 }

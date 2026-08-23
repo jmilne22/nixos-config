@@ -7,8 +7,20 @@
   # Networking
   networking.networkmanager.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Flatpak
   services.flatpak.enable = true;
+
+  # Portals - file pickers, screen sharing. Flatpak above is unusable without
+  # them. The desktop modules add their own on top; xdg.portal.enable is a bool
+  # and extraPortals is a list, so declaring them here too just merges.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # Firefox
   programs.firefox.enable = true;
@@ -38,7 +50,6 @@
     lazygit
     xclip
     pciutils
-    calibre
     p7zip
     unrar
   ];
@@ -51,6 +62,7 @@
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
     liberation_ttf
+    _0xproto
   ];
 
 
@@ -79,4 +91,11 @@
 
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # Keyboard layout. Lives here rather than in each desktop module - it's the
+  # same on every host regardless of which desktop is imported.
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 }

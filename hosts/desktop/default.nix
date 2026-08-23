@@ -4,14 +4,14 @@
     ./hardware-configuration.nix
     ../../modules/core.nix
     ../../modules/desktops/plasma.nix
-    ../../modules/packages/development.nix
-    ../../modules/packages/ai.nix
-    ../../modules/packages/social.nix
-    ../../modules/packages/multimedia.nix
-    ../../modules/packages/gaming.nix
-    ../../modules/packages/sunshine.nix
-    ../../modules/packages/productivity.nix
-    ../../users/user.nix
+    ../../modules/apps/development.nix
+    ../../modules/apps/ai.nix
+    ../../modules/apps/social.nix
+    ../../modules/apps/multimedia.nix
+    ../../modules/apps/gaming.nix
+    ../../modules/apps/sunshine.nix
+    ../../modules/apps/productivity.nix
+    ../../modules/users/user.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
