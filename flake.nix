@@ -8,6 +8,10 @@
       # without this the lock carries a second, year-old nixpkgs tree
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # No follows needed - nix-flatpak declares no inputs of its own, so there is
+    # no second nixpkgs tree to deduplicate. `ref=latest` is upstream's moving
+    # stable tag; the bare URL would track their dev branch.
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   # inputs@ binds the whole argument set as `inputs` *and* destructures from it,
