@@ -18,5 +18,8 @@
     heroic
   ];
 
-  services.flatpak.packages = [ "net.lutris.Lutris" ];
+  services.flatpak.packages = [
+    "net.lutris.Lutris"
+    "com.usebottles.bottles"
+  ];
 }
