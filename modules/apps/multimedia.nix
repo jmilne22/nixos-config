@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    stremio-linux-shell
     vlc
+  ];
+
+    services.flatpak.packages = [
+    "com.stremio.Stremio"
   ];
 }
