@@ -4,4 +4,9 @@
     discord
     telegram-desktop
   ];
+
+  services.flatpak.packages = [
+    "us.zoom.Zoom"
+  ];
+
 }
