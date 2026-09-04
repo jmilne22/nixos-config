@@ -10,6 +10,7 @@
     rustup
     nodejs
     bat
+    gh
   ];
 
   virtualisation.docker.enable = true;
