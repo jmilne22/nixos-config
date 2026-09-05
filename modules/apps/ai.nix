@@ -4,6 +4,6 @@
     claude-code
     codex
     mcp-nixos
-    chatgpt
+    chatgpt-cli
   ];
 }
