@@ -12,6 +12,10 @@
     # no second nixpkgs tree to deduplicate. `ref=latest` is upstream's moving
     # stable tag; the bare URL would track their dev branch.
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    codex-desktop-linux = {
+      url = "github:ilysenko/codex-desktop-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # inputs@ binds the whole argument set as `inputs` *and* destructures from it,
