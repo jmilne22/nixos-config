@@ -4,5 +4,6 @@
     claude-code
     codex
     mcp-nixos
+    chatgpt
   ];
 }
