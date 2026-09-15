@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     mangohud
     heroic
+    dolphin-emu
   ];
 
   services.flatpak.packages = [
