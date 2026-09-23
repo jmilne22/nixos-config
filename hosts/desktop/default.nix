@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../modules/core.nix
     ../../modules/desktops/plasma.nix
+    ../../modules/desktops/dwm
     ../../modules/apps/development.nix
     ../../modules/apps/ai.nix
     ../../modules/apps/social.nix
