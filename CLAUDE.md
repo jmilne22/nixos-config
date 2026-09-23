@@ -51,8 +51,9 @@ at least `git add`ed. Editing an already-tracked file needs no staging.
   `networking.hostName`, `system.stateVersion`, and the `imports` list.
 - Adding a module to a host means adding a line to that host's `imports`. Adding a *host* also
   means an entry in `flake.nix`.
-- One desktop per host; at most one display manager, and none on a host whose desktop already
-  brings its own (gnome→gdm, plasma→sddm).
+- One full desktop per host; at most one display manager, and none on a host whose desktop
+  already brings its own (gnome→gdm, plasma→sddm). Standalone window managers (dwm, etc.)
+  alongside that desktop are fine — they're just extra sessions and don't conflict.
 
 ## Don't
 
