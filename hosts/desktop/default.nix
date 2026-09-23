@@ -12,6 +12,7 @@
     ../../modules/apps/gaming.nix
     ../../modules/apps/sunshine.nix
     ../../modules/apps/productivity.nix
+    ../../modules/apps/virtualisation.nix
     ../../modules/users/user.nix
   ];
 
