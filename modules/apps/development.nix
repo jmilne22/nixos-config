@@ -11,6 +11,7 @@
     nodejs
     bat
     gh
+    zed-editor
   ];
 
   virtualisation.docker.enable = true;
