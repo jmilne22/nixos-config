@@ -14,6 +14,10 @@
     zed-editor
   ];
 
+  # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
+  # (claude-acp, gemini), uv-downloaded Pythons, etc.
+  programs.nix-ld.enable = true;
+
   virtualisation.docker.enable = true;
   # The group only exists where docker does, so it's declared here rather
   # than in users/user.nix. List options merge across modules.
