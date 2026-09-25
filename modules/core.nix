@@ -75,6 +75,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    jq
     htop
     helix
     fastfetch
@@ -87,6 +88,7 @@
     pciutils
     p7zip
     unrar
+    vivaldi
   ];
 
   fonts.packages = with pkgs; [
