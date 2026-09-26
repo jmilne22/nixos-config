@@ -7,15 +7,15 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=12";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_bg[]       = "#0b100d";
+static const char col_border[]       = "#263b30";
+static const char col_fg[]       = "#c4d0bd";
+static const char col_selfg[]       = "#0b100d";
+static const char col_accent[]        = "#8eaf71";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_fg, col_bg, col_border },
+	[SchemeSel]  = { col_selfg, col_accent,  col_accent  },
 };
 
 /* tagging */
@@ -58,10 +58,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_accent, "-sf", col_selfg, NULL };
 static const char *termcmd[]  = { "st", NULL };
 /* Desktop entries include GUI/Flatpak apps that are not executable names in PATH. */
-static const char *appcmd[] = { "j4-dmenu-desktop", "--dmenu=dmenu -i -fn 'JetBrainsMono Nerd Font:size=12'", "--term=st", NULL };
+static const char *appcmd[] = { "j4-dmenu-desktop", "--dmenu=dmenu -i -fn 'JetBrainsMono Nerd Font:size=12' -nb '#0b100d' -nf '#c4d0bd' -sb '#8eaf71' -sf '#0b100d'", "--term=st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
