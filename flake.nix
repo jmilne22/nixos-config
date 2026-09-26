@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    chadwm = {
-      url = "github:siduck/chadwm";
-      flake = false;
-    };
     chuwi-minibook-x = {
       url = "github:knoopx/nix-chuwi-minibook-x";
       # without this the lock carries a second, year-old nixpkgs tree
