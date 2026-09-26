@@ -12,6 +12,7 @@
     bat
     gh
     zed-editor
+    kubectl
   ];
 
   # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
