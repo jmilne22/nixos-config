@@ -69,6 +69,33 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
    sudo nixos-rebuild switch --flake .#<hostname>
    ```
 
+## Chadwm session
+
+`modules/desktops/dwm/` builds chadwm from the `chadwm` flake input, pinned in
+`flake.lock`. The login session is still named **dwm**. The desktop host currently
+also imports Plasma, so Plasma remains available in SDDM.
+
+The module supplies a Nord-themed bar and Rofi launcher. Status shows memory,
+network connectivity, default audio volume, date/time, and battery when present.
+Picom and the status process run only for the dwm session and stop on logout.
+The launcher button opens Rofi; the optional upstream Eww widget is not installed.
+
+- `Super+Enter`: terminal; `Super+c`: applications.
+- `Super+q`: close window; `Super+f`: fullscreen.
+- `Super+Shift+r`: restart chadwm; `Super+Ctrl+q`: log out.
+- Volume and brightness keys use PipeWire's PulseAudio interface and brightnessctl.
+
+Theme, status text, and NixOS adaptations live in `modules/desktops/dwm/default.nix`.
+The old `config.def.h` is preserved but is not used by chadwm. To return to Plasma
+alone, remove the dwm import from `hosts/desktop/default.nix` and rebuild. To
+restore vanilla dwm instead, restore the module's former package definition
+using `pkgs.dwm.override { conf = ./config.def.h; patches = []; }` and remove
+the unused chadwm helper definitions.
+
+Validate with `nix eval --raw .#nixosConfigurations.desktop.config.system.build.toplevel.drvPath`
+and build the window manager with
+`nix build --no-link .#nixosConfigurations.desktop.config.services.xserver.windowManager.dwm.package`.
+
 ## Notes
 
 - `result` / `result-*` are build symlinks and are gitignored — don't commit them. The

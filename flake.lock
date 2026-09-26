@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "chadwm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767059138,
+        "narHash": "sha256-4Bunr/rRF6UUOBV/LTK4gyrekXRFWdaCxkWNYfp44Jo=",
+        "owner": "siduck",
+        "repo": "chadwm",
+        "rev": "7991ac8d33878b716e7e7cabf58b47503864f622",
+        "type": "github"
+      },
+      "original": {
+        "owner": "siduck",
+        "repo": "chadwm",
+        "type": "github"
+      }
+    },
     "chuwi-minibook-x": {
       "inputs": {
         "nixos-hardware": "nixos-hardware",
@@ -109,6 +125,7 @@
     },
     "root": {
       "inputs": {
+        "chadwm": "chadwm",
         "chuwi-minibook-x": "chuwi-minibook-x",
         "codex-desktop-linux": "codex-desktop-linux",
         "nix-flatpak": "nix-flatpak",
