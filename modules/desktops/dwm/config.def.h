@@ -59,9 +59,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_accent, "-sf", col_selfg, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 /* Desktop entries include GUI/Flatpak apps that are not executable names in PATH. */
-static const char *appcmd[] = { "j4-dmenu-desktop", "--dmenu=dmenu -i -fn 'JetBrainsMono Nerd Font:size=12' -nb '#0b100d' -nf '#c4d0bd' -sb '#8eaf71' -sf '#0b100d'", "--term=st", NULL };
+static const char *appcmd[] = { "j4-dmenu-desktop", "--dmenu=dmenu -i -fn 'JetBrainsMono Nerd Font:size=12' -nb '#0b100d' -nf '#c4d0bd' -sb '#8eaf71' -sf '#0b100d'", "--term=kitty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */

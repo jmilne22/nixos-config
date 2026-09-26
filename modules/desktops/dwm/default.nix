@@ -35,7 +35,7 @@
   xdg.portal.config.common.default = [ "gtk" ];
 
   environment.systemPackages = with pkgs; [
-    st
+    kitty
     dmenu
     j4-dmenu-desktop
     feh
