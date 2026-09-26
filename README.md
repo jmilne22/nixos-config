@@ -77,6 +77,9 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
   Desktop application discovery follows `XDG_DATA_HOME` and `XDG_DATA_DIRS`,
   including Flatpak exports when present in the session environment.
   `Super+Shift+Enter` opens a terminal and `Super+Shift+q` logs out.
+  Media keys control volume, mute, playback and track skipping. Scroll over the
+  right-hand status text to change volume by 5%; right-click it to toggle mute.
+  The status indicator follows the default PipeWire output and updates every second.
 
 - `result` / `result-*` are build symlinks and are gitignored — don't commit them. The
   pattern matches at any depth, so a stray `result` inside a subdirectory won't show up in

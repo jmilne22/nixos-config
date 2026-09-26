@@ -13,9 +13,10 @@
       ${pkgs.feh}/bin/feh --no-fehbg --bg-fill /home/user/Pictures/Wallpapers/matrix.png
       # Full repaints avoid the wallpaper trails seen without a compositor.
       ${pkgs.picom}/bin/picom --config /dev/null --backend xrender --no-use-damage --daemon
+      ${pkgs.playerctl}/bin/playerctld &
       ${(pkgs.slstatus.override {
         conf = ''
-          const unsigned int interval = 2000;
+          const unsigned int interval = 1000;
           static const char unknown_str[] = "n/a";
           #define MAXLEN 2048
           static const struct arg args[] = {
@@ -40,6 +41,10 @@
                 printf '\n'
               fi
             ''}" },
+            { run_command, " VOL %s |", "${pkgs.writeShellScript "dwm-volume" ''
+              ${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null |
+                ${pkgs.gawk}/bin/awk '/MUTED/ { print "muted"; found=1; exit } /Volume:/ { printf "%.0f%%\n", $2 * 100; found=1 } END { if (!found) print "n/a" }'
+            ''}" },
             { cpu_perc, " CPU %s%% |", NULL },
             { ram_perc, " RAM %s%% |", NULL },
             { datetime, " %s ", "%a %d %b %H:%M" },
@@ -60,5 +65,7 @@
     dmenu
     j4-dmenu-desktop
     feh
+    wireplumber
+    playerctl
   ];
 }
