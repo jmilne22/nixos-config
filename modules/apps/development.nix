@@ -13,6 +13,9 @@
     gh
     zed-editor
     kubectl
+    kubernetes-helm
+    k3d
+    go-task
   ];
 
   # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
