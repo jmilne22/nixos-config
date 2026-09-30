@@ -16,6 +16,7 @@
     kubernetes-helm
     k3d
     go-task
+    act
   ];
 
   # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
