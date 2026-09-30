@@ -27,4 +27,10 @@
   # The group only exists where docker does, so it's declared here rather
   # than in users/user.nix. List options merge across modules.
   users.users.user.extraGroups = [ "docker" ];
+
+  # QEMU user-mode emulation so `docker buildx --platform linux/arm64` works.
+  # Static emulators get registered with the F flag, so the kernel preloads them
+  # and they work inside containers without being present in the image.
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.preferStaticEmulators = true;
 }
