@@ -26,6 +26,32 @@
   # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
   # (claude-acp, gemini), uv-downloaded Pythons, etc.
   programs.nix-ld.enable = true;
+  # Extra libs on top of nix-ld's defaults, for prebuilt Electron apps.
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    nss
+    nspr
+    atk
+    at-spi2-atk
+    at-spi2-core
+    cups
+    dbus
+    cairo
+    pango
+    gtk3
+    expat
+    libxkbcommon
+    libgbm
+    alsa-lib
+    udev
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxcb
+  ];
 
   virtualisation.docker.enable = true;
   # The group only exists where docker does, so it's declared here rather
