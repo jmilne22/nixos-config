@@ -106,6 +106,15 @@
   # starship prompt
   programs.starship.enable = true;
 
+  # Bash only completes a command by its own name, so an alias like `k` for
+  # kubectl gets no tab completion. complete-alias fixes that for every alias at
+  # once by completing whatever the alias expands to. mkAfter puts this after
+  # the alias definitions in /etc/bashrc; any earlier and there'd be none to see.
+  programs.bash.interactiveShellInit = pkgs.lib.mkAfter ''
+    source ${pkgs.complete-alias}/bin/complete_alias
+    complete -F _complete_alias "''${!BASH_ALIASES[@]}"
+  '';
+
   # Audio
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

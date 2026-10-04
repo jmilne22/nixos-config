@@ -13,11 +13,15 @@
     gh
     zed-editor
     kubectl
+    k9s
     kubernetes-helm
     k3d
     go-task
     act
   ];
+
+  # Tab-completes like kubectl via the alias completion set up in core.nix.
+  environment.shellAliases.k = "kubectl";
 
   # Lets prebuilt generic-Linux binaries run: Zed's npx-fetched agents
   # (claude-acp, gemini), uv-downloaded Pythons, etc.
