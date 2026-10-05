@@ -17,6 +17,7 @@
     mangohud
     heroic
     dolphin-emu
+    pcsx2
   ];
 
   services.flatpak.packages = [
