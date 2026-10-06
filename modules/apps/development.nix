@@ -18,6 +18,7 @@
     k3d
     go-task
     act
+    kubectx
   ];
 
   # Tab-completes like kubectl via the alias completion set up in core.nix.

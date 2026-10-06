@@ -89,6 +89,7 @@
     p7zip
     unrar
     vivaldi
+    openssl
   ];
 
   fonts.packages = with pkgs; [
