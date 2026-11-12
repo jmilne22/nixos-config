@@ -16,7 +16,9 @@
     k9s
     kubernetes-helm
     k3d
+    minikube
     go-task
+    gnumake
     act
     kubectx
   ];

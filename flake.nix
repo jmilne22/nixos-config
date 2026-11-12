@@ -12,10 +12,10 @@
     # no second nixpkgs tree to deduplicate. `ref=latest` is upstream's moving
     # stable tag; the bare URL would track their dev branch.
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Deliberately no nixpkgs follows: numtide's cache only has these built
+    # against their own pinned nixpkgs. Following ours means every package
+    # misses the cache and compiles locally (codex is a huge Rust build).
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   # inputs@ binds the whole argument set as `inputs` *and* destructures from it,
