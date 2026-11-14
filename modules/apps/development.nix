@@ -19,6 +19,7 @@
     minikube
     go-task
     gnumake
+    gcc
     act
     kubectx
   ];
