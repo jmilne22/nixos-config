@@ -34,27 +34,6 @@
         "type": "github"
       }
     },
-    "chuwi-minibook-x": {
-      "inputs": {
-        "nixos-hardware": "nixos-hardware",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1771574519,
-        "narHash": "sha256-wmLoEP5zqRS8pBilRu14XAeKtTwuLYtA++jMrnXSONc=",
-        "owner": "knoopx",
-        "repo": "nix-chuwi-minibook-x",
-        "rev": "d7a4af2cb67fdf076058a2c006a5d852ac70d4df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "knoopx",
-        "repo": "nix-chuwi-minibook-x",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -114,21 +93,6 @@
         "type": "github"
       }
     },
-    "nixos-hardware": {
-      "locked": {
-        "lastModified": 1753122741,
-        "narHash": "sha256-nFxE8lk9JvGelxClCmwuJYftbHqwnc01dRN4DVLUroM=",
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "rev": "cc66fddc6cb04ab479a1bb062f4d4da27c936a22",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1793977579,
@@ -163,7 +127,6 @@
     },
     "root": {
       "inputs": {
-        "chuwi-minibook-x": "chuwi-minibook-x",
         "llm-agents": "llm-agents",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2"

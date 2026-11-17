@@ -34,7 +34,7 @@ mean the packages build.
 
 Both hosts evaluate. Check every host a change can reach: a host's own `default.nix` affects
 only that host, but anything under `modules/` is shared, so eval `minibook` too (swap the
-host name in the command above).
+host name in the command above). `nix flake check --no-build` evaluates both hosts in one go.
 
 Flakes read from git, not the working tree, so a **new** file is invisible to eval until it's
 at least `git add`ed. Editing an already-tracked file needs no staging.

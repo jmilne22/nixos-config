@@ -49,7 +49,7 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 4. **Edit `hosts/<hostname>/default.nix`**:
    - Set `networking.hostName = "<hostname>";`
    - Adjust the `imports` list — swap the desktop (`modules/desktops/gnome.nix`, `plasma.nix`, `dwm/`) and app sets (`modules/apps/*.nix`) to whatever the new host needs
-   - Drop/add any host-specific hardware modules (e.g. the minibook's `chuwi-minibook-x` block) as needed
+   - Drop/add any host-specific hardware quirks (e.g. the minibook's panel-rotation `boot.kernelParams`) as needed
    - Update `system.stateVersion` if `nixos-generate-config` reported a different one
 
 5. **Register it in `flake.nix`**, under `nixosConfigurations`:
@@ -57,6 +57,8 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
    ```nix
    <hostname> = nixpkgs.lib.nixosSystem {
      system = "x86_64-linux";
+     # modules/core.nix imports from `inputs`, so every host needs this
+     specialArgs = { inherit inputs; };
      modules = [
        ./hosts/<hostname>
      ];
@@ -87,4 +89,4 @@ On a fresh NixOS install, git isn't available by default, so grab it via `nix sh
 - Only one display manager can be enabled at a time. They all feed
   `services.displayManager.generic.execCmd`, so enabling a second is an *evaluation*
   error, not a runtime one.
-- Host-specific hardware quirks (e.g. the minibook's `chuwi-minibook-x` module) get added as an extra module in that host's `modules = [ ... ]` list in `flake.nix`, and as an extra flake input if the module comes from elsewhere.
+- A hardware module that comes from another flake goes in as an extra flake input, plus an extra entry in that host's `modules = [ ... ]` list in `flake.nix`.

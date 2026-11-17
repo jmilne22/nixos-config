@@ -3,11 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    chuwi-minibook-x = {
-      url = "github:knoopx/nix-chuwi-minibook-x";
-      # without this the lock carries a second, year-old nixpkgs tree
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # No follows needed - nix-flatpak declares no inputs of its own, so there is
     # no second nixpkgs tree to deduplicate. `ref=latest` is upstream's moving
     # stable tag; the bare URL would track their dev branch.
