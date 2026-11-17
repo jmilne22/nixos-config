@@ -32,10 +32,9 @@ nix eval --raw .#nixosConfigurations.desktop.config.system.build.toplevel.drvPat
 Success means it evaluated — module names, option paths, and types all resolved. It does not
 mean the packages build.
 
-`.#minibook` does not evaluate and that is expected, not something to fix: the host isn't
-installed yet, so `hosts/minibook/hardware-configuration.nix` doesn't exist. It fails with
-`Path '...' does not exist in Git repository`. For the same reason, `nix flake check` is not
-useful here — it tries every host.
+Both hosts evaluate. Check every host a change can reach: a host's own `default.nix` affects
+only that host, but anything under `modules/` is shared, so eval `minibook` too (swap the
+host name in the command above).
 
 Flakes read from git, not the working tree, so a **new** file is invisible to eval until it's
 at least `git add`ed. Editing an already-tracked file needs no staging.
