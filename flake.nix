@@ -40,7 +40,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/minibook
-          inputs.chuwi-minibook-x.nixosModules.default
         ];
       };
     };

@@ -18,7 +18,6 @@ in
     llm-agents.claude-desktop
     llm-agents.claude-code
     llm-agents.chatgpt
-    llm-agents.codex
     mcp-nixos
   ];
 }
