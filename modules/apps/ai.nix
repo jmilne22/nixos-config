@@ -18,6 +18,7 @@ in
     llm-agents.claude-desktop
     llm-agents.claude-code
     llm-agents.chatgpt
+    antigravity-ide-fhs
     mcp-nixos
   ];
 }
